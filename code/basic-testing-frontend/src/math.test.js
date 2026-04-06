@@ -4,9 +4,16 @@ import { add } from './math';
 
 it('should summarize all number values in an array', () => {
 
-    // Arrange and Act
-    const result = add([1,2,3]);
+    // Arrange
+    const numbers = [1, 2, 3];
+
+    // Act
+    const result = add(numbers);
 
     // Assert
-    expect(result).toBe(4);
+    const expectedResult = numbers.reduce(
+        (prevValue, curValue) => prevValue + curValue, 
+        0
+    );
+    expect(result).toBe(expectedResult);
 });
