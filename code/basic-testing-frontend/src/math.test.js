@@ -76,3 +76,17 @@ it('should throw an error if no value is passed into the function', () => {
     // Assert
     expect(resultFn).toThrow();
 });
+
+it('should throw an error if provided with multiple arguments instead of an array', () => {
+
+    // Arrange
+    const num1 = 1;
+    const num2 = 2;
+
+    const resultFn = () => {
+        add(1,2); // multiple arguments instead of an array
+        // Trivia: TypeScript would have prevented this error at compile time by enforcing the correct type of the function's parameter
+    };
+
+    expect(resultFn).toThrow(/is not iterable/);
+});

@@ -1,0 +1,419 @@
+4/10/2026 
+
+*Course content from Udemy site has been altered.
+*Udemy course instructor removed a lecture video causing the numbers that prefix the video titles to shift back by 1.
+
+-------------------------------------------------------
+-------------------------------------------------------
+
+4/4/2026 -------------------------------------------------------
+** Started Course: JavaScript Unit Testing - The Practical Guide **
+
+Create and push to remote repo
+
+4/7/2026 -------------------------------------------------------
+
+13. Installing Vitest
+
+Installation Requirements
+	Install Node.JS
+		Note: this comes with Node Packager Manager (npm)
+
+	Console Commands:
+		winget install --id OpenJS.NodeJS -e
+		npm install --svae-dev vitest
+
+IMPORTANT:
+'package.json'
+	Specify Test configuration in here
+	Example,
+		"scripts": {
+			"test": "vitest --globals"
+		}
+	Tags:
+		--globals - enables unit test functions such as it() or expect()
+
+-------------------------------------------------------
+
+14. Course Project Setup
+
+Current Working Directory (CWD)
+	'.\code\' +
+		1) 'basic-testing-frontend' 
+		2) 'basic-testing-nodejs'
+		3) 'basic-testing-nodejs-esmodules'
+		*All 3 apps are the same but demonstrates how Unit Testing will apply to front/back end code
+
+Running a script from Developer Terminal
+	Prerequisite
+		npm install
+			Installs all dependencies from import statements found in 'app.js'
+				and 'package.json'
+					{
+						"name": "basic-testing-frontend",	// Project Name
+						"version": "1.0.0",
+						"description": "",
+						"main": "app.js",
+						...
+					}
+	
+		Dependencies
+			Development Dependencies 
+				*See 'package.json' -> "devDependencies" - Packages used only during development
+				Example,
+					"devDependencies": {
+						"http-server": "^14.1.0",
+						"install": "^0.13.0",
+						"npm": "^8.6.0",
+						"vitest": "^0.9.0"
+
+						"type": "module"	// *See 'basic-testing-nodejs-esmodules' related 'app.js' 
+					}
+			The above serves the 'index.html' file <form> tag
+			*NOTE: 'app.js' also imports other files
+
+	npm start
+		Runs a specified "script" defined in 'package.json' file and executes whatever command is assigned to "start"
+		Example 1, localhost:8080
+		Example 2,
+			"scripts": {
+				"start": "some command here"
+			}
+		Stop with CTR + C
+	
+	node app.js
+		Runs a .js "script" directly and starts a NodeJS server on a port
+
+'basic-testing-frontend'
+	port 8080
+	Dependency statements
+		ECMAScript(ES) Modules 
+			*See related 'app.js'
+			Examples,
+				import { extractNumbers } from './src/parser.js';
+				import { add } from './src/math.js';
+				export function add(numbers)
+		Import into 'index.html' via
+		    <script type="module" defer src="app.js"> </script>
+	'http-server' 
+		A simple tool that starts a local web server for
+			- Static websites
+			- Frontend practice projects
+			- Testing JavaScript in the browser
+			- Your unit testing setup
+			- Serves files from your current folder (HTML, JS, CSS, etc.)
+		'-c-1' option
+			-c flag controls caching.
+			-c-1 = disable caching completely
+
+'basic-testing-nodejs'
+	port 3000
+	Dependency statements
+		CommonJS module, so we use require() to import dependencies. In the ES Modules version, we would use import statements instead.
+		Examples,
+			const express = require('express');
+			const { add } = require('./src/math');
+			*Note: This is the default import syntax in 'NodeJS'
+
+'basic-testing-nodejs-esmodules'
+	port 3000
+	Dependency statements
+		CommonJS module with a specified "type": "module" in 'app.js'
+		"devDependencies": {
+			"http-server": "^14.1.0",
+			"install": "^0.13.0",
+			"npm": "^8.6.0",
+			"vitest": "^0.9.0"
+			"type": "module"	// More modern way of importing ECMAScript Modules
+		}
+
+-------------------------------------------------------
+
+15. Module Introduction
+	Talking points
+		Creating Unit Tests
+		AAA - Arrange, Act, Assert
+		What to Test & Organizing Test
+
+-------------------------------------------------------
+
+16. Basic Test File & Project Setup
+
+'app.js'
+	Serves as the main entry point when 'index.html' is loaded
+
+'math.js'
+	'add()' was exported and used in 'app.js'
+
+Unit Test
+	Unit - Smallest testable piece of code
+		- small piece of logic
+		- isolated
+		- focused
+		Examples,
+			function	*ideal unit & try not to call other functions
+			method
+			class
+			module
+
+Vitest Supports 'In-source testing' *feature is ignored in this course
+
+Create 'math.test.js'
+	Naming Unit Test files
+		add
+			'.test' right before file estension
+			'spec' is common
+			examples, 'math.test.js' or 'math.spec.js'
+		Test Runners will execute '.test.js' or '.spec.js' files
+
+	" import { FUNCTION NAME } from 'vitest'; "
+		Import Unit Testing functionality by specifying functions inside brackets
+			it
+			test
+		*importing in unit test file provides better code completion support
+	
+	'it()' & 'test()' function
+		Define a single test
+		Both do the exact same thing.
+
+'package.json'
+	'--global' flag
+		Placement:  "scripts" -> "test"
+		Set key test functions to be available globally and eliminates the
+		need to import in unit test files.
+-------------------------------------------------------
+
+17. Writing a First Test
+
+'math.test.js'
+	'it()' function 
+		Self-documenting
+		Arguments
+			'Description' of expected test result
+				example,
+					it('should summarize all number values in an array')
+					test('should summarize all number values in an array')
+			'Test' 
+				Provide an annonymous function
+				example,
+					it( '...' , () => {
+						// test code
+					})
+	import { add } from './math'
+
+	'expect()' function
+		Define expectations or success criteria
+		Arguments
+			The stored 'results' returned from 'arranging' the test
+		
+	'.to' chain functions *See Assertion Library
+		Examples,
+			expect(result).toBe(expect))
+			expect(result).toBeFalse(expect))
+			expect(result).toBeTrue(expect))
+			expect(result).toBeLessThan(expect))
+		*visit Vitest API site
+
+-------------------------------------------------------
+
+18. Running Tests
+
+PWD: 'basic-testing-frontend'
+
+'npm test'
+	This will 
+		execute the test file
+		run all tests
+		and display the test results on the console/terminal
+	Similar command is 'npm run test'
+
+	Issue: error message, '...nodejs\npm.ps1 cannot be loaded because running scripts is disabled on this system'
+	Fix: change 'Execution Policy'
+			'Set-ExecutionPolicy -Scope Process Bypass'
+		*This lasts only until you close the PowerShell window.
+
+'package.json'
+	Placement: "scripts:"
+		"test:" 
+			--reporter verbose  flag
+				Provides a  more detailed  test output
+				"scripts": {
+					"vitest --run --reporter verbose", ...
+									^^^^^^^^^^^^^^^
+					"test:watch": "vitest",
+					"start": "http-server -c-1"
+				}
+			--run
+				Only execute test file once and exit
+				Without '--run',
+					Vitest enters watch mode by default
+					On save a file, tests re-run automatically
+					Enter 'Watch mode' - gives an interactive terminal UI with live feedback
+
+	Command: 'npm run test:watch'
+		will be the same as running command: 'vitest'
+		Enter 'Watch mode and tests re-run automatically on saved changes
+
+
+-------------------------------------------------------
+
+19. Why Are We Testing?
+
+Talking points:
+	- write more tests over time
+	- run all tests at once instead of one-by-one manual tests
+	- easier to catch bugs/erros
+	- build good test coverage
+	- peer reviewers can understand intention of code
+
+-------------------------------------------------------
+
+20. The AAA Pattern - Arrange, Act, Assert
+
+3 Acts
+	Arrange - Define the testing environment & values
+	Act - Run the actual code /function that should be tested
+	Assert - Evaluate the produced value/result and compare it to the expected value/result
+
+-------------------------------------------------------
+
+21. Keep Your Tests Simple!
+
+Talking Points:
+	- Keep tests simple
+		- smaller array size
+	- Complex tests makes it harder for peer reviewers and other coders to work with
+
+-------------------------------------------------------
+
+22. Defining Behaviors & Fixing Errors In Your Code
+
+Talking Points:
+	- Write multiple tests per Unit
+	- Test for invalid results or possible unexpected scenarios as long as it makes sense
+		example,
+			expectedResult = NaN;
+	- Ensure code works as expected
+	- Avoid hard coding expected value
+		- pass a variable into .toBe() functions
+		- if unexpected result shows in test, then check how expected results in Act section
+
+'math.js'
+	modified code in 'add()' function to fix bugs
+	test file: 'math.test.js'
+		it 'should yield a correct sum if an array of numeric string values is provided'
+	Converted numeric string to number by adding plus(+) 'unary plus' operator to the operand, 'number'
+		number changed to +number
+						  ^^^^^^
+
+'math.test.js'
+	made similar code modification to calculate the 'expectedResult'
+		Add 'unary plus' operator to the operands inside the callback function, '.reduce()'
+		
+-------------------------------------------------------
+
+23. Demo: Writing More Tests
+
+Talking Points:
+	- Try to be very thorough with Unit Tests, if possible
+		- thrown errors / Exceptions
+		- inputs/arguments 
+		- results 
+		- undefined, NaN, null
+	- Writing good tests is an Iteratice Process
+		- may review old tests and realize tests need to handle new cases
+
+-------------------------------------------------------
+
+24. Testing For Errors
+
+Testing Errors in functions
+	1) Declare a variable (function reference)
+	2) Wrap test function inside function expression, arrow function, or normal function or reference
+	3) Pass variable to 'expect()' and chain with '.toThrow()'
+		example, 
+			expect(var).toThrow()
+
+Tips:	.not
+	This chain funciton tests for the opposite
+	example,
+		*expect(var).not.toThrow() // test that 'var' did not throw error
+
+-------------------------------------------------------
+
+25. Demo: Adding More Tests
+
+Tips:
+	- If a test function only accepts a single argument, test for multiple arguments
+
+Trivia:
+	- TypeScript would have prevent errors at compile time by enforcing the correct type of the function's parameter
+
+-------------------------------------------------------
+
+26. Testing For Thrown Errors & Error Messages
+
+Testing for Specific Error Messages
+	- 'toThrow()'
+		Checks that a function throws an error, and optionally verifies what kind of error it is.
+		*can take 1 optional argument
+		Method Definition:
+			(method) Vi.JestAssertion<() => void>.toThrow(expected?: string | RegExp | (new (...args: any[]) => any) | Error | undefined): void
+			Breakdown:
+				- thing inside expect() must be a function reference
+				- expected?, "?" means optional
+					- option1  string	('Expected Error Message')
+						real failed out example,	'TypeError: numbers is not iterable'
+					- option2  RegExp	(Match error message with a pattern)
+					- option3  Error	(Check exact error object instance)
+					- option4  Error Constructor (A class or constructor function)
+					- option5  undefined	(not passed anything)
+	
+Tips:
+	- Narrow down the range of errors that could be thrown to expect the right kind of error					
+
+4/10/2026 -------------------------------------------------------
+*Udemy course instructor removed a lecture video causing the numbers that prefix the video titles to shift back by 1.
+
+26. Exercise: Problem
+	Create a unit test file for numbers.js and create 3 test cases
+	
+-------------------------------------------------------
+
+27. Exercise: Solution
+
+-------------------------------------------------------
+
+28. Tests With Multiple Assertions (Multiple Expectations)
+
+Talking Points:
+	- 'NaN' is of type 'Number'
+	- "Think critically about different possible scenarios"
+	- "Challenge your expectations"
+	- A test case can have 1 or many expects()/Assertions
+		- if any 1 of the many test expect()/Assertions fail then the test case fails
+
+
+Write some tests for the two functions in validation.js
+
+-------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------
+
