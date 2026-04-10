@@ -16,7 +16,7 @@ it('should transform a valid numeric string to a number', () => {
     // expect(result).toBe(expResult);  // pass
     // expect(result).not.toBeNaN;      // pass
 });
-
+ 
 // Tip: 'NaN' is of type 'Number'
 
 it('should yield NaN if argument is not a valid numeric string', () => {
