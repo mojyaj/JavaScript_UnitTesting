@@ -393,27 +393,113 @@ Talking Points:
 	- A test case can have 1 or many expects()/Assertions
 		- if any 1 of the many test expect()/Assertions fail then the test case fails
 
-
 Write some tests for the two functions in validation.js
 
--------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Create 'validation.test.js'
+	Add 3 test case for validateStringNotEmpty()
+	Add 3 test case for validateNumber()
 
 -------------------------------------------------------
+
+29. More Practice!
+*very brief
+
+'validation.js'
+	modified the if conditional statement to check if 'number' is not equal to the datatype -> number
+
+4/11/2026 -------------------------------------------------------
+
+30. Introducing Test Suites
+
+Talking Points
+	- Test Suites group individual related test-cases into an organized unit
+	- Create a Test Suite with function,  'describe()'
+	  - Example,  describe('validateStringNotEmpty()');
+	- Test Suites can be nested inside each other for more granular structure
+
+'validation.test.js'
+	create Test Suites for 'validateNumber()' and 'validateStringNotEmpty()'
+
+-------------------------------------------------------
+
+31. Adding Tests To Frontend & Backend Projects
+
+Talking Points
+	- Unit Tests in 'basic-testing-frontend' directory can Copy&Paste into 
+		'basic-testing-nodejs' directory with no issue
+	- Unit tests written in 'basic-testing-frontend' can be applied to backend
+
+-------------------------------------------------------
+
+32. Module Summary
+
+Summary
+	- Arrange Act Assert (AAA)
+	- Expectations expect() & .toBe()
+	- Test whether a test pass or fails
+	- Multiple .to...() methods
+	- Opposite  .not.to...()
+	- Writing test cases is an iterative process
+	- Try to write tests for all possible, practical, and reasonable scenarios for a unit test
+	- Sometimes detect problems with source code
+	- Package.Json is used to define test preferences
+		- watch mode
+		- '--run' flag
+		- '--reporter verbose' flag
+	- Vitest functions
+		- describe()
+		- it()
+		- test()
+
+-------------------------------------------------------
+Start of Section 4
+
+33. Module Introduction
+
+What To & Not To Test
+	- Certain things in application code that should not be tested
+	- Good tests vs Bad tests
+	- Good tests are short and concise
+	- Testing & Code Improvements work together iteratively
+
+-------------------------------------------------------
+
+34. What To Test & Not To Test
+
+Talking Points
+	- 'basic-testing-frontend' folder contains 'parser.js' which performs operations on a browser 
+		object, 'Form Data Object'
+	- 'app.js' is using many built-in browser features or Browser API
+		- document.getElementById()
+		- document.querySelector('form')
+		- new FormData()
+	
+Rules for testing
+	- "Only test your code!"
+		- Back-End and Front-End tests should be seperated
+		- Don't write 'Front-End tests' to test 'Back-End source code' and vice versa
+		- DO test your client-side reaction to different responses & errors
+	- "Don't test third-party code"
+		- Browser API
+		- Native Node packages
+		- For third-party functions
+			- test if arguments/inputs are valid
+			- test if return values are valid
+		- Third-party packages may have bugs and its not your job to fix them
+		- If the third-party API/packages changes, then the test breaks
+	- "Don't test what you can't change"
+	
+	- isolate your code
+	- control inputs (via mocks)
+	- verify outputs and behavior
+
+-------------------------------------------------------
+
+** This .txt file was not properly staged and pushed to remote repo because I was calling git Commands
+	while in the incorrect Current Working Directory
+
+
+
+
+
 
