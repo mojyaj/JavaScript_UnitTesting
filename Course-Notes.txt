@@ -453,6 +453,7 @@ Summary
 
 -------------------------------------------------------
 Start of Section 4
+* Breif video lecturess
 
 33. Module Introduction
 
@@ -495,11 +496,95 @@ Rules for testing
 
 -------------------------------------------------------
 
-** This .txt file was not properly staged and pushed to remote repo because I was calling git Commands
+** This .txt file and other .js files were not properly staged and pushed to remote repo because I was calling git Commands
 	while in the incorrect Current Working Directory
 
+4/12/2026 -------------------------------------------------------
+
+35. Writing Good Tests - An Overview & Summary
+
+Writing Good Tests
+	- Follow AAA pattern
+	- Only test one thing for per test case
+	- Focus on the essence of a test when arranging
+		- Keep test cases short and concise
+	- Keep number of assertions low, expect()
+		- Only a few scenarios should require multiple assertions
+
+
+-------------------------------------------------------
+
+36. Only Test "One Thing"
+
+- Test one feature
+	- e.g., validate input OR transform it
+- Be as granular as possible
+
+-------------------------------------------------------
+
+37. Splitting Functions For Easier Testing & Better Code
+
+Current Working Directory: 'basic-testing-frontend'
+
+Talking Points
+	- Refactor code
+	- Out-Sourcing: Break code down into smaller functions
+		- Easier to manage & test
+		- More granular tests
+
+Testing 'app.js'
+	- function formSubmitHandle() contains complex code that should be out-sourced
+
+formSubmitHandle()
+	Processes user input, validates input, calculates a result, and updates the 
+		page without reloading.
+	Utilizes functions from math.js, number.js, validation.js
+	event.preventDefault()
+		Prevents browser from reloading the page on form submission which would normally send data 
+		to a server and cause JavaScript state to be lost
+
+-------------------------------------------------------
+
+38. Refactoring Code
+
+Current Working Directory: 'basic-testing-frontend'
+
+'app.js'
+	Refactored 'formSubmitHandle()'
+		Out-sourced almost all lines of code (including 'imports') into smaller helper 
+		functions and place them into different existing or new files
+
+		Now calls several functions
+			- 'extractEnteredNumberValues()'
+				- also calls 'extractNumbers()'
+			- 'calculateResult()'
+				- also calls 'cleanNumbers()'
+			- 'generateResultText()'
+			- 'outputResult()'
+
+Created 'output.js'
+	create function, 'generateResultText()'
+	create function, 'outputResult()'
+		Final helper function call in 'formSubmitHandle()'
+
+'parser.js'
+	create function, 'extractEnteredNumberValues()'
+		Moved 'FormData()' (Browser API) from 'app.js' inside this function
+
+'math.js'
+	create function, 'calculateResult()'
+
+'number.js'
+	create function, 'cleanNumbers()'
+
+-------------------------------------------------------
 
 
 
+
+
+
+
+	
 
 
