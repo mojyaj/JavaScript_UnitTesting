@@ -941,5 +941,40 @@ Talking Points
 		const testEmail = 'test@test.com'
 	One Test failure
 		it('should store the provided email value')
-		
+	
+-------------------------------------------------------
+	
+55. Using Testing Hooks (beforeEach, beforeAll, afterEach, afterAll)
+
+Talking Points
+	- 4 Hook functions from ViTest API
+		1) 'beforeAll()'
+				Executes a custom callback function before running first test
+				Only one call
+		2) 'beforeEach()'
+				Executes a custom callback function before each test
+		3) 'afterAll()'
+				Executes a custom callback function after running all tests
+				Only one call
+		4) 'afterEach()'
+				Executes a custom callback function after each test
+	- Multiple Test Suites, 
+		- Each Suite may require 'user' to have different properties
+		- In that case, just declare global variable with 'let' instead of 'const' keyword and
+			assign the global variable in 'beforeAll()'
+	- Databases
+		- Use 'afterEach()' to restore database
+
+	
+'hooks.test.js'
+	Import built-in hook functions
+	Call all 4 hook functions
+		1) 'beforeAll()'
+		2) 'beforeEach()'
+		3) 'afterAll()'
+		4) 'afterEach()'
+				reset 'user' so that subsequent tests can work on the original values
+				*'user' could also be assigned in 'beforeEach()'
+
+
 
