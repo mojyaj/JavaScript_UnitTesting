@@ -1,45 +1,68 @@
-import { it, expect } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
-import { transformToNumber } from './util/numbers';
+import { transformToNumber, cleanNumbers } from './util/numbers';
 
-it('should transform a valid numeric string to a number', () => {
+describe('transformToNumber()', () => {
 
-    // Arrange
-    const input = '4';
-    const expResult = +input;
+    it('should transform a valid numeric string to a number', () => {
 
-    // Act
-    const result = transformToNumber(input);
+        // Arrange
+        const input = '4';
+        const expResult = +input;
 
-    // Assert
-    expect(result).toBeTypeOf('number');
-    // expect(result).toBe(expResult);  // pass
-    // expect(result).not.toBeNaN;      // pass
-});
- 
-// Tip: 'NaN' is of type 'Number'
+        // Act
+        const result = transformToNumber(input);
 
-it('should yield NaN if argument is not a valid numeric string', () => {
+        // Assert
+        expect(result).toBeTypeOf('number');
+        // expect(result).toBe(expResult);  // pass
+        // expect(result).not.toBeNaN;      // pass
+    });
     
-    // Arrange
-    const input = '?';
-    const expResult = NaN;
+    // Tip: 'NaN' is of type 'Number'
 
-    // Act
-    const result = transformToNumber(input);
+    it('should yield NaN if argument is not a valid numeric string', () => {
+        
+        // Arrange
+        const input = '?';
+        const expResult = NaN;
 
-    // Assert
-    expect(result).toBeNaN();
+        // Act
+        const result = transformToNumber(input);
+
+        // Assert
+        expect(result).toBeNaN();
+    });
+
+    it('should yield NaN if argument is undefined', () => {
+        
+        // Arrange
+        let input = undefined;
+
+        // Act
+        const result = transformToNumber(input); // +(undefined) yields NaN
+
+        // Assert
+        expect(result).toBeNaN();
+    });
 });
 
-it('should yield NaN if argument is undefined', () => {
+describe('cleanNumbers()', () => {
+
+    it('should return an array of number values if an array of string number values is provided', () => {
+
+        // This test could also be called an integration test because we are calling 'cleanNumbers()'
+
+        // Arrange
+        const numberValues = ['1', '2'];
+
+        // Act
+        const cleanedNumbers =  cleanNumbers(numberValues);
+
+        // Assert
+        expect(cleanedNumbers[0]).toBeTypeOf('number');
+    });
+
     
-    // Arrange
-    let input = undefined;
 
-    // Act
-    const result = transformToNumber(input); // +(undefined) yields NaN
-
-    // Assert
-    expect(result).toBeNaN();
 });

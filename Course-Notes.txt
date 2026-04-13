@@ -648,6 +648,20 @@ Talking Points
 
 -------------------------------------------------------
 
+44. Writing an Integration Test & Reasoning
 
+Talking Points
+	- "Integration Tests allow us to test a combination of functions instead of just standalone functions"
+	- "Standalone functions sometimes doesn't do the trick"
+	- Even if all unit tests pass, they can still fail when used together
+	- Integration Tests may fail if function usage is incorrect
+
+'numbers.test.js'
+	Create 2 Test Suites
+		1) 'transformToNumber()'
+		2) 'cleanNumbers()'
+				create test case
+
+-------------------------------------------------------
 
 
