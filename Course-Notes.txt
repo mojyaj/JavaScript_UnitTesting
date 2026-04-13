@@ -976,5 +976,24 @@ Talking Points
 				reset 'user' so that subsequent tests can work on the original values
 				*'user' could also be assigned in 'beforeEach()'
 
+-------------------------------------------------------
+	
+56. Concurrent Tests
 
+Talking Points
+	- Run tests concurrently
+		- This speeds up test
+		- Tests run in parallel
+		- Register tests to run concurrently
+		- Examples,
+			it.concurrent('test case', () => {// test code});
+				This test case will run concurrently
+			describe.concurrent('test suite, () => {// test cases});
+				All tests in this suite will run concurrently
+		- Helpful for speeding up large tests
 
+'hooks.test.js'
+	Add 'concurrent()' to all tests
+
+-------------------------------------------------------
+	
