@@ -452,7 +452,7 @@ Summary
 		- test()
 
 -------------------------------------------------------
-Start of Section 4
+Start of Section 4: Writing Good Tests
 * Breif video lectures
 
 33. Module Introduction
@@ -624,3 +624,30 @@ in later lectures.
 	- focus on essence of a test when arranging
 	- keep assertions low, keep expect() low
 	- testing is an iterative process
+
+-------------------------------------------------------
+Start of Section 5: Integration Tests
+
+42. Module Introduction
+
+Talking Points
+	- Explore 'cleanNumbers()' and apply testing concepts
+	- Testing Units with Dependencies- Balancing Unit & Intergration Tests
+
+-------------------------------------------------------
+
+43. Introducing Integration Tests
+
+Talking Points
+	- 'cleanNumbers()' calls other custom functions
+		- testing this function implicitly tests the functions that it is calling
+		- the custom functions become dependencies for 'cleanNumbers()'
+	- Integration Test
+		- "Test the combination of functions calling different functions"
+		- Combining multiple units or functions
+
+-------------------------------------------------------
+
+
+
+
