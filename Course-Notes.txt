@@ -505,12 +505,11 @@ Rules for testing
 
 Writing Good Tests
 	- Follow AAA pattern
-	- Only test one thing for per test case
+	- Only test one thing per test case
 	- Focus on the essence of a test when arranging
 		- Keep test cases short and concise
 	- Keep number of assertions low, expect()
 		- Only a few scenarios should require multiple assertions
-
 
 -------------------------------------------------------
 
@@ -610,7 +609,18 @@ in later lectures.
 
 -------------------------------------------------------
 
+40. A Word About Code Coverage
 
-	
+- Document about good code coverage
+- Vitest has built-in tools to help with code coverage:
+	https://vitest.dev/guide/features.html#coverage
 
+-------------------------------------------------------
 
+41. Module Summary
+
+	- AAA
+	- Only test one thing
+	- focus on essence of a test when arranging
+	- keep assertions low, keep expect() low
+	- testing is an iterative process
