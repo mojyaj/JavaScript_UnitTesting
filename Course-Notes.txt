@@ -916,7 +916,30 @@ Download Section 6 'hooks' directory & moved into main directory
 			- All pass
 		- 'package.json'
 
+-------------------------------------------------------
 
+54. Why Hooks?
 
+Working Directory: './code/hooks'
 
+Talking Points
+	- Global Variables can be assigned and used in test cases replacing some 
+		redundant code
+	- Test file contains a redundant line of code
+		example,  this line is called in all test cases
+			const testEmail = 'test@test.com';
+		*Moved to global scope
+	- Problem with Global Variables
+		- Breaks the concepts of independence and isolation.
+		- Operations on a shared global variable means that subsequent tests are testing on
+			an object that keeps changing
+		- Test results will be inconsistent
+	- *Fix is in the next lecture
+
+'hooks.test.js'
+	Add global variable,
+		const testEmail = 'test@test.com'
+	One Test failure
+		it('should store the provided email value')
+		
 
