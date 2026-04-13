@@ -646,7 +646,7 @@ Talking Points
 		- "Test the combination of functions calling different functions"
 		- Combining multiple units or functions
 
--------------------------------------------------------
+4/13/2026 -------------------------------------------------------
 
 44. Writing an Integration Test & Reasoning
 
@@ -663,5 +663,43 @@ Talking Points
 				create test case
 
 -------------------------------------------------------
+
+Testing For Errors
+
+'numbers.test.js'
+	add one more test case for thrown errors
+	
+-------------------------------------------------------
+
+46. Integration vs Unit Tests: Finding the Right Balance
+
+defuse video confusion:
+	Unit Test - refering to testing standalone functions
+	Integration Test - refering to testing a function calling multiple custom functions
+
+Talking Points
+	- How should you balance between writing Unit Tests vs Integration Tests?
+		- focus on testing standalone functions?
+			- YES
+			- easier to debug a single failed test
+			- easier to manage
+		- focus on testing functions calling multiple custom functions?
+			- NO
+			- Rarely and only for special cases
+			- much harder to debug & manage
+			- Special case,
+				- Standalone functions may fail when used in combination with other functions
+				- Standalone functions do work on their own and have no idea what other functions can do
+	- Important to have Granular standalone functions that can be tested in isolation
+		- This makes Integration Testing less error prone
+
+	- Trivia: End-to-End tests (E2E tests)
+		- Test entire user flow processes
+		- Test a bunch of units in combination
+
+*End of Section 5
+
+-------------------------------------------------------
+
 
 
