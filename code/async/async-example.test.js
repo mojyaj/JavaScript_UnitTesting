@@ -1,7 +1,8 @@
 import { it, expect } from 'vitest'
 
-import { generateToken } from './async-example.js'
+import { generateToken, generateTokenPromise } from './async-example.js'
 
+// Testing a function that returns a Promise 
 it('should generate a token value', (doneFn) =>  {
 
     // Arrange
@@ -10,16 +11,35 @@ it('should generate a token value', (doneFn) =>  {
     // Act & Assert
     generateToken(testUserEmail, (err, token) => {
         
-        //expect(token).toBeDefined();
-
         try {
-            expect(token).toBe(2); 
+            
+            expect(token).toBeDefined();
+            //expect(token).toBe(2); // this should fail
             doneFn();
         }
         catch (err){
             doneFn(err);
         }
-        
     });
-
 });
+
+it('should generate a token value', () => {
+
+    // Arrange
+    const testUserEmail = 'test@test.com';
+
+    // Act & Assert
+    expect(generateTokenPromise(testUserEmail)).resolves.toBeDefined();
+});
+
+it('should generate a token value ASYNC', async () => {
+
+    // Arrange
+    const testUserEmail = 'test@test.com';
+
+    const token = await generateTokenPromise(testUserEmail);
+
+    // Act & Assert
+    expect(token).toBeDefined();
+});
+

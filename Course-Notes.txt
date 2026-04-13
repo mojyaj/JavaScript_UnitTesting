@@ -782,13 +782,17 @@ Create 'async' Directory
 		'package.json'
 
 Create 'async-example.testing.js'
-	Add test case showcasing an async function problem
+	Add test case for 'generateToken()'
 
 -------------------------------------------------------
 
 50. Testing Asynchronous Code With Callbacks
 
 Original problem is explained better in this lecture
+
+Talking Points
+	- '.toBe()' & '.toEqual()' can throw error and Vitest will show reason for failure
+	- Avoid false positives in 'callback-based' async tests using try/catch
 
 Problem
 	- False Positive
@@ -821,17 +825,50 @@ Solution/Fix
 	Fix: 
 		- Wrap async test code in try/catch
 		- Example,
-			try {
-				expect(token).toBe(2); 
-				doneFn();
-			}
-			catch (err){
-				doneFn(err);
-			}
+			generateToken(testUserEmail, (err, token) => {
+				try {
+					expect(token).toBe(2); 
+					doneFn();
+				}
+				catch (err){
+					doneFn(err);
+				}
+			});
+
+-------------------------------------------------------
+
+51. Testing Asynchronous Code With Promises & async / await
 
 Talking Points
-	- '.toBe()' & '.toEqual()' can throw error and Vitest will show reason for failure
-	- Avoid false positives in 'callback-based' async tests using try/catch
+	- Testing with 'Promises' is easier than with callback functions
+	- 'expect()' supports 'Promises'
+		- Wrap a function which returns a 'Promise' with 'expect()'
+		- can chain 2 other keywords
+			1) resolves
+			2) rejects
+		- finally, '.toBe()'
+		- example, 
+    		expect(generateTokenPromise(testUserEmail)).resolves.toBeDefined();
+		- '.toBeDefined()'  asserts that the value is not equal to 'undefined'
+	- 'async' keyword usage
+		- example,
+			async () => { // test code }
+			^^^^^
+	- 'await' keyword usage
+		- example,
+    		const token = await generateTokenPromise(testUserEmail);
+
+'async-example.testing.js'
+	Add 2 test cases for 'generateTokenPromise()'
+	Same tests but different variations
+		1) passed test function as argument into 'expect()'
+		2) defined 'async' anonymous function and used 'await' keyword
+			This approach makes sense for integration testing where multiple async tasks
+			sequetially depend on one another
+
+-------------------------------------------------------
+
+
 
 
 
