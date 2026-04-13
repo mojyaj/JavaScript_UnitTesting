@@ -60,7 +60,8 @@ describe('cleanNumbers()', () => {
         const cleanedNumbers =  cleanNumbers(numberValues);
 
         // Assert
-        expect(cleanedNumbers[0]).toBeTypeOf('number');
+        expect(cleanedNumbers[0]).toBe([1,2]);
+        //expect(cleanedNumbers[0]).toBeTypeOf('number');
     });
 
     it('should throw an error if an array with at least one empty string is provided', () => {

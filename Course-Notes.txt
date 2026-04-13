@@ -453,7 +453,7 @@ Summary
 
 -------------------------------------------------------
 Start of Section 4: Writing Good Tests
-* Breif video lectures
+* Brief video lectures
 
 33. Module Introduction
 
@@ -700,6 +700,59 @@ Talking Points
 *End of Section 5
 
 -------------------------------------------------------
+* Start of Section 5: Advanced Testing Concepts
 
+47. Module Introduction
+
+Talking Points
+	- More Key Testing Library APIs
+	- testing Asynchronous Code
+	- Using Setup & Cleanup Hooks
+	- Concurrent Tests
+
+-------------------------------------------------------
+
+48. toBe() vs toEqual()
+
+Talking Points
+	- .toBe()
+		- Use case: Comparing
+			- numbers
+			- strings
+			- booleans
+		- 'resultValue'  must be EXACTLY  'expectedValue'
+		- Strict equality operation (===)
+		- does NOT perform a deep comparison
+		- Object comparison
+			- Only looks at Memory Reference
+			- All Objects have a UNIQUE Memory Reference
+			- All object comparisons will FAIL
+			- Only compare nested key and values
+	- .toEqual()
+		- Performs Deep Comparison
+		- Deep Comparison, def.
+			- Check values inside array
+			- Check values inside nested objects
+		- Use case: Comparing
+			- Objects
+			- Arrays
+			- Complex Data
+		- Compares
+			- Object properties
+			- Array contents
+			- Nested structures
+
+	- JavaScript
+		- == , loose equality operator compares
+			- value
+			- example,  '1' == 1 yields TRUE
+		- === , strict equality operator compares
+			- memory reference
+			- value
+			- datatype
+			- * All object comparisons yield toBeFalse
+		- reference video: https://academind.com/articles/reference-vs-primitive-values
+
+-------------------------------------------------------
 
 
