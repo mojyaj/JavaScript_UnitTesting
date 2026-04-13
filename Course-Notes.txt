@@ -453,7 +453,7 @@ Summary
 
 -------------------------------------------------------
 Start of Section 4
-* Breif video lecturess
+* Breif video lectures
 
 33. Module Introduction
 
@@ -579,10 +579,36 @@ Created 'output.js'
 
 -------------------------------------------------------
 
+39. Formulating Different Expectations
 
+Write tests for recently created functions, except for some involve mocking which will be discussed 
+in later lectures.
+	i.e,  
+		- 'extractEnteredNumberValues()' calls Browser API - FormData()
+			- 'extractNumbers()' called inside of above function
+		- 'cleanNumbers()' calls multiple functions in our source code
+		- 'outputResult()' calls Browser API
 
+'output.js'
+	Create test suite for 'generateResultText()'
+		out-sourced from original 'app.js'
+	'outputResult()' is excluded for now
 
+'output.test.js'
+	Create Test Suite, 'generateResultText()'
 
+'math.test.js'
+	Create Test Suite, 'calculateResult()'
+
+'math.js'
+	Create function 'calculasteResult()'
+		out-sourced from original 'app.js'
+
+'numbers.js'
+	Create function ''cleanNumbers()'
+		out-sourced from original 'app.js'
+
+-------------------------------------------------------
 
 
 	

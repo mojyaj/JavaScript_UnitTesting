@@ -11,6 +11,7 @@ export function add(numbers) {
   return sum;
 }
 
+// Returns numeric string. Takes an array containing two numbers, sanitize, and add
 export function calculateResult(numberValues) {
   let result = '';
   try {
