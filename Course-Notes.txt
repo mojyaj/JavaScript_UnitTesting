@@ -700,7 +700,7 @@ Talking Points
 *End of Section 5
 
 -------------------------------------------------------
-* Start of Section 5: Advanced Testing Concepts
+* Start of Section 6: Advanced Testing Concepts
 
 47. Module Introduction
 
@@ -754,5 +754,35 @@ Talking Points
 		- reference video: https://academind.com/articles/reference-vs-primitive-values
 
 -------------------------------------------------------
+
+49. The Problem With Asynchronous Code
+
+Talking Points
+	- Asynchronous tasks
+		- Callback functions
+		- Promise
+		- async/await
+	- JSON Web Token (JWT)
+		- hashed string used for web authentication
+		- INSTALL 'jsonwebtoken' package
+	- Problem
+		- assertions inside of asynchronous functions PASS even thorough
+			the resulting value is actually incorrect
+		- *solution/fix in next video lecture
+
+Create 'async' Directory
+	./code/async/
+	Download two intructor files
+		'async-example.js'
+			2 functions
+				1) 'generateToken()'
+				2) 'generateTokenPromise()'
+		'package.json'
+
+Create 'async-example.testing.js'
+	Add test case showcasing an async function problem
+
+-------------------------------------------------------
+
 
 
