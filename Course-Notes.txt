@@ -893,4 +893,30 @@ a promise implicitly).
 
 -------------------------------------------------------
 
+53. Getting Started with "Testing Hooks"
+
+Talking Points
+	- Hooks  (not React.Js hooks)
+		- Basic Definition: Functions that are automatically executed by the test runner at
+			certain times.
+	- .toHaveProperty('email')
+		- asserts if a property at provided reference key exists for an object
+
+Download Section 6 'hooks' directory & moved into main directory
+	Files
+		- 'hooks.js'
+			class user
+				property
+					email
+				methods
+					updateEmail()
+					clearEmail()
+		- 'hooks.test.js'
+			- 5 test cases
+			- All pass
+		- 'package.json'
+
+
+
+
 
