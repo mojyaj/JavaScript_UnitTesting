@@ -2,7 +2,7 @@ import { it, expect } from 'vitest'
 
 import { generateToken } from './async-example.js'
 
-it('should generate a token value', () =>  {
+it('should generate a token value', (doneFn) =>  {
 
     // Arrange
     const testUserEmail = 'test@test.com';
@@ -11,10 +11,15 @@ it('should generate a token value', () =>  {
     generateToken(testUserEmail, (err, token) => {
         
         //expect(token).toBeDefined();
-        
-        // This should FAIL, but Vitest tells us that it PASSED!
-        expect(token).toBe(2); // 2 is incorrect value
 
+        try {
+            expect(token).toBe(2); 
+            doneFn();
+        }
+        catch (err){
+            doneFn(err);
+        }
+        
     });
 
 });

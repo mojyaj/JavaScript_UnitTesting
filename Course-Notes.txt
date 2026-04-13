@@ -766,8 +766,10 @@ Talking Points
 		- hashed string used for web authentication
 		- INSTALL 'jsonwebtoken' package
 	- Problem
-		- assertions inside of asynchronous functions PASS even thorough
-			the resulting value is actually incorrect
+		- False Positive
+		- Synchronous test code will finish before Asynchronous test code
+			- Assertions/expect() inside of asynchronous functions will not get the chance to execute
+			- ** A test is marked as Passed if there is no assertion/expect() **
 		- *solution/fix in next video lecture
 
 Create 'async' Directory
@@ -783,6 +785,53 @@ Create 'async-example.testing.js'
 	Add test case showcasing an async function problem
 
 -------------------------------------------------------
+
+50. Testing Asynchronous Code With Callbacks
+
+Original problem is explained better in this lecture
+
+Problem
+	- False Positive
+	- Synchronous test code will finish before Asynchronous test code
+		- Assertions/expect() inside of asynchronous functions will not get the chance to execute
+		- ** A test is marked as Passed if there is no assertion/expect() **
+Solution/Fix
+	- Pass a Callback function as an argument into anonymous function 'it()' or 'test()'
+	- Callback function will be called before test execution is complete	allowing
+		assertions/expect() to be properly evaluated 
+	- Call inside of async functions
+		- This implies that testable async functions MUST define a callback function in its parameters
+	- Example, 				
+		it('test case', (doneFn) => {
+							^^^^^^^
+			const input = 'test@test.com';
+
+			generateToken(input, (err, token) => {
+				expect(token).toBe(2);
+
+				doneFn();  THIS STILL FAILS -> Error: Timeout
+				^^^^^^
+			});
+		});
+	- If 'doneFn()' is not called, test will hang or timeout (FAIL)
+	New Problem
+		- Error: Timeout
+		- Culprit: '.toBe(2)' failed and an error is thrown
+		- Vitest is waiting for doneFn() and its never called
+	Fix: 
+		- Wrap async test code in try/catch
+		- Example,
+			try {
+				expect(token).toBe(2); 
+				doneFn();
+			}
+			catch (err){
+				doneFn(err);
+			}
+
+Talking Points
+	- '.toBe()' & '.toEqual()' can throw error and Vitest will show reason for failure
+	- Avoid false positives in 'callback-based' async tests using try/catch
 
 
 
