@@ -1122,3 +1122,22 @@ Create 'io.test.js'
 			1) Resolves when the file is successfully written
 			2) Rejects if there is an error
 			3) *** Resolves with undefined ***
+
+-------------------------------------------------------
+
+62. Introducing Spies & Mocks
+
+Talking Points
+	- Fix Side-Effects
+	- Two Main Approaches 
+		1) Spies
+			- Wrapper around functions
+			- Empty replacements for functions that allow you to track how a function was called
+				- find where function was executed
+		2) Mocks
+			- A replacement for an API that may provide some test-specific behavior instead
+			- Often implement some test specific logic in the replacement that does something 
+				different than the original function but helps test different scenarios
+
+-------------------------------------------------------
+
