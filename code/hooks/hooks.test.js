@@ -29,7 +29,6 @@ it.concurrent('should update the email', () => {
   const newTestEmail = 'test2@test.com';
 
   user.updateEmail(newTestEmail);
-
   expect(user.email).toBe(newTestEmail);
 });
 
@@ -46,13 +45,11 @@ it.concurrent('should store the provided email value', () => {
 it.concurrent('should clear the email', () => {
   
   user.clearEmail();
-
   expect(user.email).toBe('');
 });
 
 it.concurrent('should still have an email property after clearing the email', () => {
   
   user.clearEmail();
-
   expect(user).toHaveProperty('email');
 });

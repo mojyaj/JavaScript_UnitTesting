@@ -1052,7 +1052,44 @@ execution is, that tests that perform clashing (global) state manipulations may 
 
 *End of Section 6
 -------------------------------------------------------
+*Start of Section 7: Mocking & Spies: Dealing with Side Effects
 
+59. Module Introduction
+
+Talking Points
+	- Mocks & Spies
+	- external dependencies
+
+-------------------------------------------------------
+
+60. The Starting Project
+
+Working Directory: 'section7-start-project'
+
+Talking Points
+	- 'app.js' instantiates a 'data' object
+		- 'generateReportData()' returns 'data' after performing work on the 'data'
+			- uses dummy data as an example
+		- 'storeData()' internally calls an async 'writeData()' 
+	- 'io.js'  exports  'writeData()'
+		- Two NodeJs Modules
+			- path
+				- path.join()
+					- construct a file path where we want to store a file
+					- working directory:  'data'
+			- promises as fs (file system module)
+				- fs.writeFile()
+					- creates a file, write to file, save file
+	- 'data' folder
+		- Folder which 'io.js' will work with
+	- 'logger.js'
+		- exports 'log()'
+			- console.log(msg);
+	- console command: node app.js 
+		Runs the project and create a file, ,'data.txt' into 'data' directory
+
+Download & Add 'section7-start-project'
+	NodeJS project
 
 
 
