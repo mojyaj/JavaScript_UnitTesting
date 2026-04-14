@@ -1215,6 +1215,16 @@ Talking Points
 	
 -------------------------------------------------------
 
+65. Note on Mocking
 
+Talking Points
+	- 'vi.mock()'
+		- will only impact tests and not production code
+		- is hoisted
+		- Mocks only apply in the file where they are declared
+		- does not make mocked functions available to other test files
+		- All other tests that require mocks must declare 'vi.mock()'
+		- *Vitest does NOT guarantee execution order based on mocking
 
+-------------------------------------------------------
 
