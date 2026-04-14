@@ -1221,10 +1221,21 @@ Talking Points
 	- 'vi.mock()'
 		- will only impact tests and not production code
 		- is hoisted
+		- mocks are not shared across several test files
 		- Mocks only apply in the file where they are declared
 		- does not make mocked functions available to other test files
 		- All other tests that require mocks must declare 'vi.mock()'
 		- *Vitest does NOT guarantee execution order based on mocking
+
+-------------------------------------------------------
+
+Notes on Spies
+
+Talking Points
+	- Spies
+		- are empty functions that have trackers to track if they have been executed
+		- Can test if Spies were called multiple times, 'toBeCalledTimes()'
+		- Can test if Spies were any passed specific arguments, 'toBeCalledWith()'
 
 -------------------------------------------------------
 
