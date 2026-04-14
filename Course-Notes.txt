@@ -1141,3 +1141,33 @@ Talking Points
 
 -------------------------------------------------------
 
+63. Working with Spies
+
+Focus:  'data.js'
+
+Talking Points
+	- 'generateReportData()'
+		- Test wether the callback function is called if a callback is provided
+		- Test if someone removed the callback invocation by testing that the argument is ignored
+		- Intentionally not importing 'log()' from 'logger.js'
+		- 'log()' has a Side-Effect
+			calls console.log() which interacts with the system console (external system)
+		- Test wether the argument is passed into 'console.log()'
+		- Dont test wether 'console.log()' works
+		- Need to utilize a 'Spy Replacement' -> the 'vi' object
+		- *See 'data.test.js'
+		- 'toBeCalled()' or 'toHaveBeenCalled()' are meant to be used with spies
+
+'data.test.js'
+	Import 'vi' object 
+	Spy usage
+		'vi.fn()'  creates an empty function which keeps track of any function executions of that function
+			Example,
+				const logger = vi.fn();
+				generateReportData(logger);
+				expect(logger).toBeCalled();
+
+-------------------------------------------------------
+
+
+
