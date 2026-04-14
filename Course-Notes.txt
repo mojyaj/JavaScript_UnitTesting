@@ -1229,7 +1229,7 @@ Talking Points
 
 -------------------------------------------------------
 
-Notes on Spies
+66. Notes on Spies
 
 Talking Points
 	- Spies
@@ -1239,3 +1239,63 @@ Talking Points
 
 -------------------------------------------------------
 
+67. Custom Mocking Logic
+
+Talking Points
+	- Use Mocks to isolate tests away from dependencies
+	- vi.fn( () => { // Custom Mock Logic } );
+		- The anonymous function passed into 'vi.fn()' can be used as an implementation for the
+			dummy function
+		- This spy still keeps track of execution but with added test behavior
+	- Example, vi.fn( (input) => input * 2) 
+				- reacts to input
+				- behaves like a real function
+				- can simulate complex scenarios
+	- 'data.test.js'
+		- dependency on 'io.js' module (source)
+			- 'writeData()'
+	- 'io.js'
+		- dependency on 'path' and 'fs' modules (third-party)
+			- 'path.join()'
+			- 'fs.writeFile()'
+	- Test that 'writeFile()' was called with the 'data' & 'testFilename' that was 
+		passed to 'writeData()'
+	- Test that 'path.join()' returns a correct file name
+		- Replace the 'join()' method with our own custom logic
+
+'io.test.js'
+	Remove third-party functions from the test environment
+	Create test case to showcase 'writeData()' utilizing mocked 'writeFile()' & 'join()'
+		`should show that writeData() passes the correct arguments to fs.writeFile, 
+    	using the result from path.join().`
+	Declare 'vi.mock('path')
+		Replace the 'join()' method by passing a function and return an object 
+		containing what method to replace inside a child 'default' object
+		Example, 
+			vi.mock('path', () => { 
+				return {
+					default: {
+						// method to mock
+						join: (...args)
+							// return the last element in the array, 'filename'
+							return args[args.length - 1]
+					}
+				};
+			});
+		*** This mock 'join()' now only returns the last argument ('filename', 'test.txt') that was passed into 
+			it when running this test only
+
+Use Cases related to Custom Mocking Logic
+	- Simulating dynamic behavior (input → output)
+	- Simulating success vs failure
+	- Controlling edge cases
+	- Replacing expensive or slow operations
+	- Verifying how a function is used
+	- Simulating stateful behavior
+		- vi.fn()
+			.mockReturnValueOnce(1)
+			.mockReturnValueOnce(2)
+	- Testing retry logic
+		- retry mechanisms
+		- fallback logic
+	- Mimicking real business logic (without dependencies)
