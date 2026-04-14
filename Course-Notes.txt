@@ -1091,5 +1091,34 @@ Talking Points
 Download & Add 'section7-start-project'
 	NodeJS project
 
+-------------------------------------------------------
 
+61. The Problem With Side Effects & Tests
 
+Talking Points
+	- 'data.txt' file must be created prior to running tests
+	- Create 'data.txt' with console command: node app.js 
+	- test case working with 'writeFile()' 
+		- side-effects
+			- possible clash with external dependencies
+				- hard drive
+				- production database
+			- possible insert, delete, or overwrite of valuable production data files
+				- in hard drive
+				- in back end server
+		- side-effect FIX is Mocks
+	- Only test how our function works with 'writeFile()' 
+		- Don't test if it writes to a file because it should already work
+			- Third-party developers already tested that it works
+	
+Create 'io.test.js'
+	Wrote a test to verify that 'writeFile()' method was called
+		writeFile()' returns a 'Promise'
+		assert a resolved 'Promise' was returned from 'writeFile()'
+		* return value is 'undefined' 
+		* 'writeData()' in this test actually does not resolve to any value at all
+	IMPORTANT TO KNOW
+		'writeFile()' (Promise version) behavior
+			1) Resolves when the file is successfully written
+			2) Rejects if there is an error
+			3) *** Resolves with undefined ***
