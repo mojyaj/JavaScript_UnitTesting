@@ -1167,7 +1167,54 @@ Talking Points
 				generateReportData(logger);
 				expect(logger).toBeCalled();
 
+4/14/2026 -------------------------------------------------------
+
+64. Getting Started with Mocks & Automocking
+
+Talking Points
+	- Testing should not perform real changes in a production environment and only in a test environment
+	- Problem with using Spies on third-party functions
+		- Back-track to previous lecture, 'writeData()' calls, 'writeFile()' from a third-party module
+			"We don't want to execute the original 'writeFile()' method. Instead, we only want to 
+				find out if it was called, but it shouldn't do its job of writing to the file 
+				system. It shuold do that during production, but not when we run our test."
+			- We can't use Spies to replace 'writeFile()' with an empty function, because we don't own 
+			'writeFile().
+			- This is where Mocks become useful
+	- Mocking third-party functions
+		- Can easily replace functionality defined in third-party modules even if we don't own them
+		- Can mock custom modules or third-party modules
+		- See 'io.test.js' changes
+		- vi.mock('[modulePath]') creates empty spy functions for all functions in the specified module
+
+'io.test.js'
+	import 'vi' function
+	import 'promises' from 'fs' module (same as 'io.js' source file)
+	Create Mock for all functions in the 'file system'(alias 'fs') module
+		vi.mock('fs');
+			Pass in the name or path to the module
+				Vitest will find this module and replace all its functions with empty spy functions
+			*Can pass extra arguments to define different configurations
+		'writeFile()' will no longer write to the file system and a 'Test.txt' shouldn't exist
+	IMPORTANT
+		import the mocked module into the test file
+	*False Positive 
+		Before running: npm test, DELETE the file -> Test.txt
+	Broken Assertion Logic
+		The async function no longer returns a 'Promise'
+		There is nothing to resolve
+	Fix
+		Call the mocked functions
+		Assert the mocked function was called
+	Example,
+		// Execute the mocked functions
+		writeData(testData, testFilename);
+
+		// Assert that the mocked 'writeFile()' was called inside of mocked 'writeData()'
+		expect(fs.writeFile).toBeCalled();
+	
 -------------------------------------------------------
+
 
 
 
