@@ -1299,3 +1299,32 @@ Use Cases related to Custom Mocking Logic
 		- retry mechanisms
 		- fallback logic
 	- Mimicking real business logic (without dependencies)
+
+-------------------------------------------------------
+
+68. Managing Custom Mock Implementations Globally (__mocks__ Folder)
+
+Talking Points
+	- Mock replacements can be placed in a seperate organized file
+	- '__mocks__' folder 
+		- Two 'underscores' preceeding & proceeding 'mocks'
+		- Files in here can be used to set up mocks for third-party functions or 
+			custom functions
+	- Created a file named, 'fs.js', after the third-party 'file system' module
+		- Declare a Mock 'writeFile()' function with our own implementation
+		- Now when 'vi.mock('fs') is called in other test files, Vitest will search
+			the '__mocks__' directory and use the mocked implementations if any are 
+			found.
+		- If Vitest does not find a 'fs.js' file, then it will create empty replacements
+			for all methods in the module
+
+Create '__mocks__' directory 
+	Important to place this directory in the same level as 'app.js' & 'package.json'
+
+Create 'fs.js' to implement our own testing behavior
+	import {vi} from 'vitest'
+	Replace/Mock 'writeFile()' as an example
+		returns a 'Promise' and call 'resolve()'
+
+-------------------------------------------------------
+

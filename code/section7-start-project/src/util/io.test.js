@@ -37,8 +37,7 @@ it(`should show that writeData() passes the correct arguments to fs.writeFile,
 	// 		3) *** Resolves with undefined ***
 });
 
-// Try to ignore the test case name here
-it('should execute the writeData method', () => {
+it('should return a promise that resolves to no value if called correctly', () => {
 
     const testData = 'Test';
     const testFilename = 'test.txt';
@@ -47,13 +46,13 @@ it('should execute the writeData method', () => {
     writeData(testData, testFilename);
 
     // Assert that the mocked 'writeFile()' was called inside of mocked 'writeData()'
-    expect(fs.writeFile).toBeCalled();
+    //expect(fs.writeFile).toBeCalled();
 
     // Assert that the mocked 'writeFile()' was called inside of mocked 'writeData()'
     //expect(fs.writeFile).toBeCalled();
 
     // Assertion using Spies (ORIGINAL)
-    //return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
+    return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
     
     // IMPORTANT TO KNOW
 	// 	.writeFile() (Promise version) behavior
