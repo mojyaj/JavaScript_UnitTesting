@@ -1328,3 +1328,53 @@ Create 'fs.js' to implement our own testing behavior
 
 -------------------------------------------------------
 
+69. More Mocking Functionalities
+
+Talking Points
+	- Two important Functions
+		1) mockImplemntation()
+		2) mockImplementationOnce()
+
+	- 'mockImplementationOnce()'
+		- Use this function on a mock function to create test behavior specific to a 
+			test case
+	- Example,
+		const logger = vi.fn( () => { // Original Implementation } );
+        logger.mockImplementationOnce( () => { // One-Time Usage  });
+	- This implementation is used once and then resets back to an default mock implementation
+	- Temporary override
+
+	- 'mockImplementation()'
+		- Sets the default behavior for all calls
+
+-------------------------------------------------------
+
+70. Module Summary
+
+Talking Points
+	- Mocks can replace entire modules
+		- Allows full control and isolation from dependencies
+		- Both source or third-party
+		- Allows us to bring our own implementations
+		- __mocks__
+		- Use Case
+			- mock APIs
+			- mock Databases
+			- mock File System
+	- Spies
+		- Track/Observe a functions real behavior
+		- Can optionally replace it
+		- Use Case
+			- verify a function call
+			- track arguments
+			- count calls
+	- Use Mocks to replace behavior
+	- Use Spies to observer behavior
+	- TIP: Clean up
+		- afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+*End of Section 7
+-------------------------------------------------------
+
