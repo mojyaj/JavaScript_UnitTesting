@@ -1424,9 +1424,11 @@ Create 'validation.test.js'
 
 73. Refresher: Practicing Basic Tests (1)
 
-
 Create 'errors.test.js'
-	Add two test cases
+	Add three test cases
 
 Create 'validation.test.js'
-	Add 1 test case
+	Add 2 test case
+
+-------------------------------------------------------
+

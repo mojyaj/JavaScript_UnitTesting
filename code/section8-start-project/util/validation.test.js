@@ -23,7 +23,16 @@ describe('validatinoNotEmpty()', () => {
         expect(errorFn).toThrow();
     });
 
-    it('should throw with specified error message', () => {
+    it(`should throw if argument 'text' only consists of blanks`, () => {
+
+        const text = '   ';
+
+        const errorFn = () => { validateNotEmpty(text, 'error message') };
+
+        expect(errorFn).toThrow();
+    });
+
+    it('should throw an error with the provided error message', () => {
 
         const text = '';
         const errorMsg = 'error message'
