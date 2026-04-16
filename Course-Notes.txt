@@ -335,7 +335,7 @@ Testing Errors in functions
 			expect(var).toThrow()
 
 Tips:	.not
-	This chain funciton tests for the opposite
+	This chain function tests for the opposite
 	example,
 		*expect(var).not.toThrow() // test that 'var' did not throw error
 
@@ -1377,4 +1377,47 @@ Talking Points
 
 *End of Section 7
 -------------------------------------------------------
+*Start of Section 8: More on Mocking & Diving Developer
+
+71. Module Introduction
+
+Talking Points
+	- Mock global objects and functions
+	- More mocking patterns
+	- Mock Front-End features
+
+-------------------------------------------------------
+
+72. The Starting Project
+
+About This Project
+	- 'index.hmtl'
+		- contains a form that can be submitted
+	- 'app.js'
+		- code that handles form submission
+			1) calls 'exctractPostData()' to extract data from the form
+				to 'postData
+			2) calls and AWAITS 'savePost()' to save the 'postData'
+				- Internally calls async function, 'sendDataRequest()', which RETURNS a Promise ('response.json()')
+					using the async fetch() (third-party)
+		- Catch and Display error messages onto web page with help of
+			'showError()'
+
+TODO:
+	- 'error.js'
+	 	Write tests for two classes
+			1) 'HttpError'
+			2) 'ValidationError'
+	- 'validation.js'
+		Writes tests for function
+			'validateNotEmpty()'
+
+Create 'errors.test.js'
+
+
+Create 'validation.test.js'
+
+
+-------------------------------------------------------
+
 
