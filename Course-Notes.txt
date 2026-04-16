@@ -1457,5 +1457,49 @@ Craeted 'http.test.js'
 	Declare a Spy with added behavior to mimick 'fetch()'
 	Declare a mock function to replace 'fetch()' with the Spy function
 	
+4/16/2026 -------------------------------------------------------
+
+Mocking Frontend Libraries
+
+*No video
+
+Instructor Document:
+
+In this example project, the global fetch() API / function is used.
+
+You can, of course, also use third-party libraries in frontend JavaScript projects though. 
+For example, the axios library is a very popular library for sending HTTP requests from the 
+frontend.
+
+In case you're working with such a library, instead of a global value, you can mock that 
+library as you learned in the previous section (i.e., use vi.mock('axios'), provide a 
+__mocks__/axios.js file if necessary etc.).
+
 -------------------------------------------------------
+
+78. Test-specific Mocking Logic
+
+Talking Points
+	- Does 'sendDataRequest()' really converts the provided data into JSON data?
+	- 'JSON.stringify()' is a third-party that converts JavaScript values into a JSON object
+	- Issue: 'fetch()' must recieve JSON data as argument otherwise it FAILS
+	- Fix: Add behavior to mocked/spied 'fetch()' to reject non-JSON data
+		 - JSON data is always of type 'string'
+
+'http.test.js'
+	Add a test case, 'should return a Promise containing any available response data'
+	Modified mocked 'fetch()' to return 'reject('Not a string.)' if the 'Response.body' is NOT of 
+		type 'string'
+	Readability Issues can arise when
+		writing assertions calling async functions and using 'return' & 'resolves' keyword might now 
+		behave as expected
+	Improve readability by
+		writing assertions calling async function and using 'async/await' & 'try/catch' could be a 
+		better way of testing
+
+-------------------------------------------------------
+
+
+
+
 
