@@ -14,6 +14,7 @@ export async function sendDataRequest(data) {
 
   if (!response.ok) {
     throw new HttpError(response.status, 'Sending the request failed.', responseData);
+    // throw new Error('Dummy Error');
   }
 
   return responseData;

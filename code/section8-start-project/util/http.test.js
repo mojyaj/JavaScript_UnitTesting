@@ -59,7 +59,27 @@ it('should convert the provided data to JSON before sending the request', async 
     */
 });
 
+
+
 it('should throw an HttpError in case of non-ok responses', () => {
+    // Modified version of mocked 'fetch()' (AKA 'testFetch') from above
+    testFetch.mockImplementationOnce( (url, options) => {
+        return new Promise( (resolve, reject) => {
+            if (typeof options.body !== 'string') {
+                return reject('Not a string.');
+            }
+            
+            const testResponse = {
+                ok: false, // changed from true to false
+                json() {
+                    return new Promise( (resolve, reject) => {
+                        resolve(testResponseData);
+                    })
+                }
+            };
+            resolve(testResponse);
+        });
+    });
 
     const testData = {key: 'test'};
     

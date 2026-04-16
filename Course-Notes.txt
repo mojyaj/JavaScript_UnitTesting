@@ -1459,7 +1459,7 @@ Craeted 'http.test.js'
 	
 4/16/2026 -------------------------------------------------------
 
-Mocking Frontend Libraries
+77. Mocking Frontend Libraries
 
 *No video
 
@@ -1499,7 +1499,21 @@ Talking Points
 
 -------------------------------------------------------
 
+79. Mocking In Selected Places
 
+Talking Points
+	- Test that 'sendDataRequest()' throws an error is response (status code) is a non-'ok' (ok = 200) value
+	- Problem: Currently, mocked 'fetch()' does not implement logic to set 'ok' to false
+			'sendDataRequest()' will only throw if 'fetch()' returns a 'Promise' that 'rejects'
+	- Fix: Temporarily replace the originally mocked 'fetch()' using,
+			'mockImplementationOnce()'
+			Add behavior to mocked 'fetch()'
 
+'http.test.js'
+	Add a test case, 'should throw an HttpError in case of non-ok responses'
+	Declare 'testFetch.mockImplementationOnce()'
+		Copy & Paste original mock implementation
+		Modify 'testResponse' to return 'ok: false'
 
+-------------------------------------------------------
 
