@@ -1,7 +1,7 @@
 import {HttpError} from './errors.js';
 
 export async function sendDataRequest(data) {
-                          // Dummy Back-end (does not exist)
+                          // Dummy Back-end (does not)
   const response = await fetch('https://dummy-site.dev/posts', {
     method: 'POST',
     headers: {

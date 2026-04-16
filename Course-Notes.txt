@@ -1427,8 +1427,35 @@ Create 'validation.test.js'
 Create 'errors.test.js'
 	Add three test cases
 
+
+-------------------------------------------------------
+
+74. Refresher: Practicing Basic Tests (2)
+
 Create 'validation.test.js'
 	Add 2 test case
+	
+-------------------------------------------------------
 
+75. Reasons to Mock
+
+Talking Points:
+	- fetch() come from Browser API and modern NodeJs
+	- AVOID sending a real request to a Back-end production environment
+	- Use mocks to replace third-party
+	
+-------------------------------------------------------
+
+76. Mocking Global Values & Functions
+
+Talking Points
+	- Mock fetch() to remove this dependency from our test environment
+	- Problem: fetch() is a global function and does not live in a Module
+	- Fix: use 'vi.stubGlobal('fetch')'
+
+Craeted 'http.test.js'
+	Declare a Spy with added behavior to mimick 'fetch()'
+	Declare a mock function to replace 'fetch()' with the Spy function
+	
 -------------------------------------------------------
 
