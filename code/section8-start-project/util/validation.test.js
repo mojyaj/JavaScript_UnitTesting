@@ -14,11 +14,6 @@ describe('validatinoNotEmpty()', () => {
         expect(errorFn).not.toThrow();
     });
 
-    /** it(`should throw if argument 'errorMessage' is undefined`)
-     *  This is testing 'ValidationError' class. It doesn't belong here.
-     */
-
-
     it(`should throw if argument 'text' is empty string`, () => {
 
         const text = '';

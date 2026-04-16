@@ -7,11 +7,11 @@ let validError;
 
 beforeAll( () => {
 
-    httpError = new HttpError('200', 'message', 'json data');
+    httpError = new HttpError('200', 'message', { key: 'json data'});
     validError = new ValidationError('validation message')
 });
 afterEach( () => {
-    httpError = new HttpError('200', 'message', 'json data');
+    httpError = new HttpError('200', 'message', { key: 'json data'});
     validError = new ValidationError('validation message')
 });
 
@@ -22,7 +22,17 @@ describe('Class HttpError', () => {
             statusCode
             message
             data
+        Any unassigned properties will be undefined
     */
+
+    it('should contain the provided message', () => {
+
+        const testMessage = 'test';
+
+        const testError = new ValidationError(testMessage);
+
+        expect(testError.message).toBe(testMessage);
+    });
 
     it('should create an object of type HttpError using new keyword', () =>  {
 
@@ -33,27 +43,39 @@ describe('Class HttpError', () => {
 
         const newStatusCode = '400';
         const newMessage = 'new message';
-        const newData = 'new data';
+        const newData = { key: 'new data'};
 
         const resultHttpError = new HttpError(newStatusCode, newMessage, newData);
 
         expect(resultHttpError.statusCode).toBe(newStatusCode);
         expect(resultHttpError.message).toBe(newMessage);
-        expect(resultHttpError.data).toBe(newData);
+        expect(resultHttpError.data).toEqual(newData);
+    });
+
+    it('should contain undefined as data if no data is provided', () => {
+
+        const newStatusCode = '400';
+        const newMessage = 'new message';
+
+        const resultHttpError = new HttpError(newStatusCode, newMessage);
+
+        expect(resultHttpError.statusCode).toBe(newStatusCode);
+        expect(resultHttpError.message).toBe(newMessage);
+        expect(resultHttpError.data).toBeUndefined();
     });
 
     it('should get correct statusCode, message, and data', () =>  {
 
         expect(httpError.statusCode).toBe('200');
         expect(httpError.message).toBe('message');
-        expect(httpError.data).toBe('json data');
+        expect(httpError.data).toEqual({ key: 'json data'});
     });
 
     it('should set new statusCode, message, and data', () =>  {
 
         const newStatusCode = '400';
         const newMessage = 'new message';
-        const newData = 'new data';
+        const newData = { key: 'new data'};
 
         httpError.statusCode = newStatusCode;
         httpError.message = newMessage;
@@ -61,10 +83,9 @@ describe('Class HttpError', () => {
 
         expect(httpError.statusCode).toBe(newStatusCode);
         expect(httpError.message).toBe(newMessage);
-        expect(httpError.data).toBe(newData);
+        expect(httpError.data).toEqual(newData);
     });
 });
-
 
 describe('Class ValidationError', () =>  {
 

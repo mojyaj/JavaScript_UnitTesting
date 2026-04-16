@@ -1347,7 +1347,7 @@ Talking Points
 	- 'mockImplementation()'
 		- Sets the default behavior for all calls
 
--------------------------------------------------------
+4/15/2026 -------------------------------------------------------
 
 70. Module Summary
 
@@ -1413,11 +1413,20 @@ TODO:
 			'validateNotEmpty()'
 
 Create 'errors.test.js'
-
+	Add test suite
+	Add 4 test cases
 
 Create 'validation.test.js'
-
+	Add test suite
+	Add 4 test cases
 
 -------------------------------------------------------
 
+73. Refresher: Practicing Basic Tests (1)
 
+
+Create 'errors.test.js'
+	Add two test cases
+
+Create 'validation.test.js'
+	Add 1 test case
