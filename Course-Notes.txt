@@ -1672,3 +1672,17 @@ Talking Points
 
 -------------------------------------------------------
 
+89. A Brief Look at the "Testing Library" Package
+
+Talking Points
+	- For building complex apps
+		- features in JSDOM or Happy-DOM may not be sufficient
+	- 'Testing Library' is a library that can be used with Vitest/Jest
+		- Third-Party library that can help by providing utility functions/methods
+		- It makes writing tests much easier
+		- Built-In methods for
+			- selecting elements
+			- simulating user events e.g., mouse-clicks
+	- Supports other popular libraries
+
+-------------------------------------------------------
