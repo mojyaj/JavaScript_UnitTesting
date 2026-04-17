@@ -1662,4 +1662,13 @@ Talking Points
 
 -------------------------------------------------------
 
+88. Finishing Example
+
+Talking Points
+	- Verify that the provided text is actually set inside of the virtual DOM
+
+'dom.test.js'
+	Add test case, 'should output the provided message in the error paragraph'
+
+-------------------------------------------------------
 
