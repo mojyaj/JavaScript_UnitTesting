@@ -23,6 +23,7 @@ vi.stubGlobal('document', document);
 
 beforeEach( () => {
     // Reset virtual document
+    document.body.innerHTML = '';
     document.write(htmlDocumentContent);
 });
 
@@ -45,7 +46,6 @@ it('should not contain an error paragraph initially', () => {
     // Arrange
     const errorsEl = document.getElementById('errors');
     const errorParagraph = errorsEl.firstElementChild;
-    console.log(`Log: ${errorParagraph}`);
 
     // Assert
     expect(errorParagraph).toBeNull();
