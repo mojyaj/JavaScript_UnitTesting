@@ -1585,5 +1585,37 @@ Create 'dom.test.js'
 
 -------------------------------------------------------
 
+84. Working with Different Testing Environments
+
+Talking Points
+	- "When working with Vitest/Jest, you can choose to environment to test in"
+		- NodeJS APIs (Default), JSDOM, Happy-DOM
+
+		1) Defualt environment
+			- NodeJS APIs and modules are available
+			- Can't interact with browser & browser APIs
+
+		2) JSDOM (Virtual DOM Environment)
+			- Emulates code running on a browser
+
+		3) Happy-DOM (Vitest Only)
+			- Provides access to the DOM and Browser API
+			- Virtually emulated environment
+			- Environment where test code can run/execute 
+			- Ideal for front-end code & projects
+
+	- Change environment with --environment flag
+	- More info: https://vitest.dev/guide/cli.html#command-line-interface#:~:text=CLI%3A-,%2D%2Denvironment,-%3Cname%3E
+	- Tips:
+		- CLI: --dom,  Mock browser API with happy-dom
+
+'package.json'
+	Change test environment to Happy-DOM
+	"scripts":
+		"test": "vitest --run --environment happy-dom"
+
+-------------------------------------------------------
+
+
 
 

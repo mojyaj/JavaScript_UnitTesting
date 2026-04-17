@@ -2,11 +2,15 @@ import { describe, it, expect, beforeEach } from 'vitest'
 
 import { sendPostData, extractPostData } from './posts.js'
 
+let testTitle;
+let testContent;
+let testFormData;
+
 beforeEach( () => {
 
-    const testTitle = 'Test title';
-    const testContent = 'Test content';
-    const testFormData = {
+    testTitle = 'Test title';
+    testContent = 'Test content';
+    testFormData = {
         title: testTitle,
         content: testContent,
         get(identifier) {
