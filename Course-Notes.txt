@@ -1649,5 +1649,17 @@ Talking Points
 
 -------------------------------------------------------
 
+87. DOM Tests & Cleanup Work
+
+Talking Points
+	- Calling 'showError()' will cause subsequent test
+	- Make sure to reset any changes made after or before every Tests
+	- Use hook functions: beforeEach() or afterEach() 
+
+'dom.test.js'
+	Call 'beforeEach()'
+		behavior -> Reset the virtual document
+
+-------------------------------------------------------
 
 
