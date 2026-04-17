@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { it, vi } from 'vitest';
+import { it, expect, vi } from 'vitest';
 import { Window } from 'happy-dom'
 
 import { showError } from './dom.js'
@@ -21,9 +21,18 @@ document.write(htmlDocumentContent);    // Load file into virtual DOM
 // Stub/Replace the REAL 'document' with our VIRTUAL 'document'
 vi.stubGlobal('document', document);
 
-it('first test', () => {
+it('should add an error paragraph to the id="errors" element', () => {
 
-    showError('test');
+    // Act
+    showError('Test');
+
+    // Arrange
+    const errorsEl = document.getElementById('errors');
+    const errorParagraph = errorsEl.firstElementChild;
+    console.log(`Log: ${errorParagraph}`);
+
+    // Assert
+    expect(errorParagraph).toBeNull();
 });
 
 

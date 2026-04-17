@@ -1616,6 +1616,38 @@ Talking Points
 
 -------------------------------------------------------
 
+85. Setting up a Virtual HTML Page
+
+Talking Points
+	- Problem: Need to load 'index.html' into the DOM so that source code will 
+		work and we can start testing
+	- We enabled a browser-like environment (e.g. jsdom), but that alone doesn’t 
+		fully simulate a real webpage.
+	- Fix: Need to do some test-specific setup so that test code can execute
+		as expected
+		- Load 'index.html' into virtual DOM (Happy-Dom) so we can interact with it
+		*See 'dom.test.html'
+
+'dom.test.js'
+	import fs from 'fs' module from NodeJs
+	import path from 'path' module so we can open/load 'index.html' file
+	import Window from 'happy-dom'
+	Open & Read 'index.html'
+	Instantiate a 'Window' object with new Window() from 'Happy-DOM'
+	Create a reference to the 'virtual DOM'
+	Load 'index.html' into the 'virtual DOM'
+	Stub/Replace the REAL 'document' with our VIRTUAL 'document'
+		vi.stubGlobal('document', document)
+	*See code for reference
+
+-------------------------------------------------------
+
+86. Testing DOM Functionalities
+
+'dom.test.js'
+	Add test case 'should add an error paragraph to the id="errors" element'
+
+-------------------------------------------------------
 
 
 
