@@ -1511,9 +1511,44 @@ Talking Points
 
 'http.test.js'
 	Add a test case, 'should throw an HttpError in case of non-ok responses'
-	Declare 'testFetch.mockImplementationOnce()'
-		Copy & Paste original mock implementation
-		Modify 'testResponse' to return 'ok: false'
+		Declare 'testFetch.mockImplementationOnce()'
+			Copy & Paste original mock implementation
+			Modify 'testResponse' to return 'ok: false'
 
 -------------------------------------------------------
+
+80. Using Local Mock Values
+
+Talking Points
+	- 'post.js' file
+		- 2 functions
+			- 'sendDataRequest()'
+			- 'extractPostData()'
+	- Testing data from 'forms'
+		- write tests to verify the property values are being extracted inside custom functions
+		- don't write tests to verify 'form' objects and its internal functions
+		- Simulate 'form' data objects then perform tests on them (true isolation)
+
+Create 'posts.test.js'
+	Add test case, 'should extract title and content from the provided form data'
+		Declare a 'testFormData' helper object which contains a 'get()' method that returns a value
+		based on the key input
+		Declare simulated data (that is supposed to be inside of a real form)
+			1) 'testTitle'
+			2) 'testContent'
+
+-------------------------------------------------------
+
+81. Module Summary
+
+Talking Points
+	- Mocked global objects/functions with 'stubGlobal()'
+	- Build fake mock objects without Vitest features
+	- Simulate or setup fake/dummy data to test custom functions
+		- This ensures isolation from third-party or dependencies
+
+*End of Section 8
+-------------------------------------------------------
+
+
 
