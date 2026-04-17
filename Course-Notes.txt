@@ -1550,5 +1550,40 @@ Talking Points
 *End of Section 8
 -------------------------------------------------------
 
+82. Module Introduction
+
+Talking Points
+	- Handling Side-Effects with different
+	- Accessing the DOM from inside the Tests
+	- DOM vs NodeJS Environment
+	- Accessing the DOM
+	- Specialized Libraries
+	
+4/17/2026 -------------------------------------------------------
+
+83. Understanding the Problem
+
+Talking Points
+	- 'dom.js'
+		- exports 'showError()' - Replaces existing HTML elements and with a new element that
+			displays an error message
+			- Selects a DOM element, id = 'errors'
+			- Clears the text inside of selected element
+			- Creates an element, <p>
+			- Sets Text Content to provided message (argument)
+			- Appends the error element to the selected DOM element
+		- Problem: 
+			- side-effect
+			- This function relies on the DOM and DOM functions
+			- We could use 'vi.stubGlobal()' to mock the DOM but, DOM has 
+				- complicated data structure
+				- properties
+				- complex functions, methods, properties
+		- Fix: Vitest support the DOM virtually (out-of-the-box)
+
+Create 'dom.test.js'
+
+-------------------------------------------------------
+
 
 
