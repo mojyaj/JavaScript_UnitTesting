@@ -1685,4 +1685,14 @@ Talking Points
 			- simulating user events e.g., mouse-clicks
 	- Supports other popular libraries
 
--------------------------------------------------------
+4/18/2026 -------------------------------------------------------
+*End of Section 9: Testing & The DOM (Frontend JavaScript Testing)
+
+90. Module Summary
+	- Build & configure testing environment
+	- Virtualized Happy-DOM and JSDOM
+	- Set up mock modules and functions
+	- 'Testing Library' is a popular third-party that works well with Vitest
+	
+
+
